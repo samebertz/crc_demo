@@ -1,7 +1,7 @@
 function compute_crc(message, generator, preset, post_invert) {
   // TODO: input validation
 
-  // const crc_length = generator.length - 1;
+  const crc_length = generator.length - 1;
   // const message_crc_length = message.length + crc_length + 1;
   // console.log(message, generator);
 
