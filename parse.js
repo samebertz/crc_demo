@@ -1,4 +1,4 @@
-const superscript_map_array = [
+const utf8_superscripts = [
     ['²', '2'],
     ['³', '3'],
     ['⁴', '4'],
@@ -8,13 +8,12 @@ const superscript_map_array = [
     ['⁸', '8'],
     ['⁹', '9']
 ];
-const superscript_map = new Map(superscript_map_array);
+const superscript_map = new Map(utf8_superscripts);
 
 function bitstring_from_polynomial (polynomial) {
   function parse_term(term) {
     return term.replace(/x\^?/i, '0').replace(/./g, match => superscript_map.get(match) || match);
   }
-
   let parsed_polynomial = polynomial.split(/[\s+]+/).map(term => parse_term(term));
 
   for(let i=0; i < parsed_polynomial.length; i++) {
@@ -25,16 +24,13 @@ function bitstring_from_polynomial (polynomial) {
   let degrees = parsed_polynomial.map(term => parseInt(term, 10));
 
   function degrees_to_bitstring (degrees) {
-    // console.log(degrees);
     let bitarray = new Array(degrees[0]);
     bitarray.fill(0);
     for(degree of degrees) {
       bitarray[degree] = 1;
     }
-    // console.log(bitarray);
     return bitarray;
   }
-
   return degrees_to_bitstring(degrees).reverse();
 }
 
