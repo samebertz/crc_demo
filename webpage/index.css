@@ -1,0 +1,38 @@
+body, input {
+  font-family: monospace;
+  font-size:  14pt;
+  background-color: #eee;
+}
+#input, #output {
+  width: 46%;
+  padding: 2%;
+  float: left;
+}
+#input {
+  background-color: #fae;
+}
+#output {
+  background-color: #cde;
+}
+#crc_output {
+  white-space: pre;
+
+}
+input {
+  width: 320px;
+  border: 1px solid black;
+  padding: 0 4px 2px 4px;
+}
+.input-polynomial {
+
+}
+.input-bitstring {
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+#compute_button {
+  margin-top: 40px;
+  background: white;
+  border: 1px solid black;
+}
