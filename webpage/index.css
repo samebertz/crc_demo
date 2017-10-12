@@ -1,38 +1,35 @@
-body, input {
-  font-family: monospace;
-  font-size:  14pt;
+body {
+  font: 14pt monospace;
   background-color: #eee;
 }
-#input, #output {
-  width: 46%;
-  padding: 2%;
-  float: left;
+input, button {
+  padding: 4px;
+  border: 1px solid black;
+  font: 12pt monospace;
 }
-#input {
+h3 {
+  margin: 8px 0 8px 0;
+}
+#wrapper {
+  width: 640px;
+  margin: auto;
+}
+#input-wrapper {
+  padding: 24px;
+  padding-top: 12px;
   background-color: #fae;
 }
-#output {
+#output-wrapper {
+  padding: 24px;
   background-color: #cde;
 }
-#crc_output {
+#crc_steps {
+  width: 100%;
+  font: 10pt monospace;
   white-space: pre;
+}
 
-}
-input {
-  width: 320px;
-  border: 1px solid black;
-  padding: 0 4px 2px 4px;
-}
-.input-polynomial {
-
-}
-.input-bitstring {
+.bitstring-input {
   font-weight: bold;
-  letter-spacing: 4px;
-}
-
-#compute_button {
-  margin-top: 40px;
-  background: white;
-  border: 1px solid black;
+  letter-spacing: 0.25em;
 }

@@ -1,21 +1,36 @@
-<div id="input">
-  <div id="message_input">
-    <h2>Message</h2>
-    polynomial: <input class="input-polynomial" id="message_polynomial" type="text" placeholder="x^6 + x^4 + x^2 + x + 1"><br>
-    bitstring: <input class="input-bitstring" id="message_bitstring" type="text" maxwidth="10" placeholder="1010111">
-  </div>
-  <div id="generator_input">
-    <h2>Generator</h2>
-    polynomial: <input class="input-generator input-polynomial" id="generator_polynomial" type="text" placeholder="x^8 + x^2 + x + 1"><br>
-    bitstring: <input class="input-generator input-bitstring" id="generator_bitstring" type="text" maxwidth="10" placeholder="100000111">
-  </div>
-  <button id="compute_button" type="button">compute CRC</button>
-</div>
-<div id="output">
-  <div id="crc_output">
+<!doctype html>
+<html><head>
 
-  </div>
-  <div id="check_output">
+  <meta charset="utf-8">
+  <title>CRC Demo</title>
 
+  <link href="index.css" rel="stylesheet">
+  <script src="main.js"></script>
+
+</head><body>
+
+<div id="wrapper">
+  <div id="input-wrapper">
+    <div>
+      <h3>Message</h3>
+      polynomial: <input type="text" placeholder="x^6 + x^4 + x^2 + x + 1"><br>
+      bitstring: <input id="message-bitstring" class="bitstring-input" type="text" maxwidth="10" placeholder="1010111">
+    </div>
+    <div>
+      <h3>Generator</h3>
+      polynomial: <input type="text" placeholder="x^8 + x^2 + x + 1"><br>
+      bitstring: <input id="generator-bitstring" class="bitstring-input" type="text" maxwidth="10" placeholder="100000111">
+    </div>
+    <div id="options">
+      <h3>Options</h3>
+      preset: <input id="preset-option" type="checkbox"><br>
+      post-invert: <input id="post_invert-option" type="checkbox"><br>
+      <button id="compute_button" type="button">compute CRC</button>
+    </div>
+  </div>
+  <div id="output-wrapper">
+    <div id="crc_steps"></div>
   </div>
 </div>
+
+</body></html>

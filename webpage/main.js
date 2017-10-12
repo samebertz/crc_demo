@@ -1,4 +1,4 @@
-(function () {
+window.onload = () => {
 'use strict';
 
 const superscript_map_array = [
@@ -70,38 +70,42 @@ function compute_crc(message, generator, preset, post_invert) {
 }
 
 // could grab all "input" elements so it's not searching the DOM redundantly?
-const gen_poly = document.getElementById('generator_polynomial');
-const gen_bits = document.getElementById('generator_bitstring');
-const msg_poly = document.getElementById('message_polynomial');
-const msg_bits = document.getElementById('message_bitstring');
+// const gen_poly = document.getElementById('generator_polynomial');
+const gen_bits = document.getElementById('generator-bitstring');
+// const msg_poly = document.getElementById('message_polynomial');
+const msg_bits = document.getElementById('message-bitstring');
 const crc_butt = document.getElementById('compute_button');
-const crc_out = document.getElementById('crc_output');
+const crc_out = document.getElementById('crc_steps');
+const opt_preset = document.getElementById('preset-option');
+const opt_post_invert = document.getElementById('post_invert-option');
 
 (function init_conversion_hooks() {
-  gen_poly.addEventListener('keypress', (event) => {
-    if(event.key === 'Enter') {
-      // TODO: input validation
-      let bitstring_array = bitstring_from_polynomial(event.target.value);
-      gen_bits.value = bitstring_array.join('');
-    }
-  }, false);
-  gen_bits.addEventListener('input', (event) => {gen_poly.value = '';}, false);
-
-  msg_poly.addEventListener('keypress', (event) => {
-    if(event.key === 'Enter') {
-      // TODO: input validation
-      let bitstring_array = bitstring_from_polynomial(event.target.value);
-      msg_bits.value = bitstring_array.join('');
-    }
-  }, false);
-  msg_bits.addEventListener('keypress', (event) => {msg_poly.value = '';}, false);
+  // gen_poly.addEventListener('keypress', (event) => {
+  //   if(event.key === 'Enter') {
+  //     // TODO: input validation
+  //     let bitstring_array = bitstring_from_polynomial(event.target.value);
+  //     gen_bits.value = bitstring_array.join('');
+  //   }
+  // }, false);
+  // gen_bits.addEventListener('input', (event) => {gen_poly.value = '';}, false);
+  //
+  // msg_poly.addEventListener('keypress', (event) => {
+  //   if(event.key === 'Enter') {
+  //     // TODO: input validation
+  //     let bitstring_array = bitstring_from_polynomial(event.target.value);
+  //     msg_bits.value = bitstring_array.join('');
+  //   }
+  // }, false);
+  // msg_bits.addEventListener('keypress', (event) => {msg_poly.value = '';}, false);
 
   crc_butt.addEventListener('click', (event) => {
-  	let result = compute_crc(msg_bits.value.split(''), gen_bits.value.split(''));
+    let preset = opt_preset.checked;
+    let post = opt_post_invert.checked;
+  	let result = compute_crc(msg_bits.value.split(''), gen_bits.value.split(''), preset, post);
     let steps = result[1];
     //console.log(steps.join('\n'));
     crc_out.textContent = steps.join('\n');
   }, false);
 })();
 
-})();
+}
